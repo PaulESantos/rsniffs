@@ -23,3 +23,5 @@ Imports:
 Depends: 
     R (>= 4.1.0)
 LazyData: true
+URL: https://github.com/PaulESantos/rsniffs
+BugReports: https://github.com/PaulESantos/rsniffs/issues
