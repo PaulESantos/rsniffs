@@ -1,0 +1,25 @@
+Package: rsniffs
+Title: Access to Forest and Wildlife Statistical Data from SNIFFS (PERU)
+Version: 0.0.0.1
+Authors@R: 
+    person("Paul Efren", "Santos Andrade", , 
+    "paulefrens@gmail.com",
+     role = c("aut", "cre"))
+Description: Provides programmatic access to public data from the statistical component of the National System of Forest and Wildlife Information (SNIFFS) managed by SERFOR (Peru). The package allows users to retrieve, clean, and analyze datasets such as forest concessions, forest product transportation, and wildlife use, facilitating transparency, research, and decision-making in forest and wildlife governance.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports:
+    httr,
+    readxl,
+    janitor,
+    readr,
+    dplyr,
+    tidyr
+Depends: 
+    R (>= 4.1.0)
+LazyData: true

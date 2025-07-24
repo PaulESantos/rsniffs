@@ -1,0 +1,7 @@
+^rsniffs\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^README\.Rmd$
+^cran-comments\.md$
+^raw_data
+^data-raw$
