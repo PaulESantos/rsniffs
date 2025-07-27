@@ -36,43 +36,11 @@ structured and cleaned access to publicly available datasets.
 
 ## Features
 
-This package allows users to access cleaned and up-to-date data from the
-following developed elements within the Statistical Component of SNIFFS:
-
-| COMPONENT | Dataset Element | Status |
-|----|----|----|
-| TÍTULOS HABILITANTES | CONCESIONES | Desarrollada |
-| TÍTULOS HABILITANTES | AUTORIZACIONES | Desarrollada como data set |
-| TÍTULOS HABILITANTES | PERMISOS |  |
-| TÍTULOS HABILITANTES | BOSQUES LOCALES | Desarrollada |
-| TÍTULOS HABILITANTES | CESIÓN EN USO EN SISTEMA AGROFORESTAL |  |
-| REGISTROS NACIONALES | REGENTES FORESTALES Y DE FAUNA SILVESTRE |  |
-| REGISTROS NACIONALES | PLANTACIONES FORESTALES |  |
-| REGISTROS NACIONALES | ESPECIALISTAS |  |
-| REGISTROS NACIONALES | REGISTRO NACIONAL DE INFRACTORES |  |
-| FAUNA SILVESTRE | CURSO DE EDUCACIÓN, SEGURIDAD Y ÉTICA EN LA CAZA DEPORTIVA | Desarrollada |
-| FAUNA SILVESTRE | REGISTRO DE EMPRESAS AUTORIZADAS | Desarrollada |
-| FAUNA SILVESTRE | CENTRO DE MANEJO/CRÍA DE FAUNA SILVESTRE |  |
-| AUTORIZACIONES | DESBOSQUE |  |
-| AUTORIZACIONES | CAMBIO DE USO |  |
-| PRODUCCIÓN, INDUSTRIA Y COMERCIO | PRODUCCIÓN FORESTAL |  |
-| PRODUCCIÓN, INDUSTRIA Y COMERCIO | DEPÓSITOS Y ESTABLECIMIENTOS | Desarrollada |
-| PRODUCCIÓN, INDUSTRIA Y COMERCIO | CENTROS DE TRANSFORMACIÓN |  |
-| PRODUCCIÓN, INDUSTRIA Y COMERCIO | PRECIOS FORESTALES |  |
-| PRODUCCIÓN, INDUSTRIA Y COMERCIO | BAMBÚ A NIVEL NACIONAL | Desarrollada |
-| CAMÉLIDOS SUDAMERICANOS SILVESTRES | CAMÉLIDOS SUDAMERICANOS |  |
-| CAMÉLIDOS SUDAMERICANOS SILVESTRES | DECLARACIONES DE MANEJO |  |
-| COMERCIO EXTERIOR | EXPORTACIONES |  |
-| COMERCIO EXTERIOR | PERMISOS DE EXPORTACIÓN | Desarrollada |
-| CONTROL DE PRODUCTORES | PRODUCTOS TRANSFERIDOS |  |
-| CONTROL DE PRODUCTORES | SEDES Y PUESTOS DE CONTROL | Desarrollada |
-| CONTROL DE PRODUCTORES | PRODUCTORES FORESTALES CLASIFICADOS PARA SER TRANSFERIDOS |  |
-| INVESTIGACIÓN CIENTÍFICA Y RECURSOS GENÉTICOS | AUTORIZACIONES DE INVESTIGACIÓN CIENTÍFICA |  |
-| INVESTIGACIÓN CIENTÍFICA Y RECURSOS GENÉTICOS | REGISTRO DE ACCESO A RECURSOS GENÉTICOS |  |
-| INVESTIGACIÓN CIENTÍFICA Y RECURSOS GENÉTICOS | INSTITUCIONES CIENTÍFICAS NACIONALES DEPOSITARIAS DE MATERIAL BIOLÓGICO | Desarrollada |
-
-Each function downloads the data directly from official SERFOR Google
-Drive spreadsheets, processes and cleans the information.
+This package allows users to access cleaned and up-to-date data from
+selected datasets published under the Statistical Component of SNIFFS.
+Each function connects to SERFOR’s official cloud resources, retrieves
+structured data, and returns it as a tidy `data.frame` ready for
+analysis.
 
 ------------------------------------------------------------------------
 
@@ -99,7 +67,7 @@ library(rsniffs)
 #>   https://sniffs.serfor.gob.pe/estadistica/es
 #> Type ?rsniffs to get started or visit the documentation for examples and guidance.
 
-# Example: Get bamboo  data
+# Example: Get bamboo-related data
 pic_plantaciones_bambu()
 #> # A tibble: 1,681 × 23
 #>    ano_de_otorgamiento arffs       sede  numero_certificado titular departamento
@@ -143,41 +111,39 @@ pic_movilizacion_bambu()
 
 ## Available Functions
 
-| Function | Description |
-|----|----|
-| `th_concesiones()` | Get registry of forest concessions |
-| `th_autorizaciones` | Internal dataset on authorizations |
-| `th_bosques_locales()` | Get registry of local forests |
-| `fs_curso_caza_deportiva()` | Get registry of authorized hunting courses |
-| `fs_empresas_autorizadas()` | Get registry of authorized wildlife companies |
-| `pi_depositos()` | Get registry of deposits and establishments |
-| `pi_bambu_nacional()` | Get bamboo-related data at the national level |
-| `ce_permisos_exportacion()` | Get registry of issued export permits |
-| `cp_sede_puestos_control()` | Get list of forest and wildlife control offices |
-| `icrg_inst_depositarias()` | Get list of national scientific institutions storing biological samples |
+| Component | Element | Function Name | Status |
+|----|----|----|----|
+| TÍTULOS HABILITANTES | CONCESIONES | `th_concesiones()` | Desarrollada |
+| TÍTULOS HABILITANTES | AUTORIZACIONES | `th_autorizaciones()` | Dataset |
+| TÍTULOS HABILITANTES | BOSQUES LOCALES | `th_bosque_local()` | Desarrollada |
+| FAUNA SILVESTRE | CURSO DE EDUCACIÓN, SEGURIDAD Y ÉTICA EN LA CAZA DEPORTIVA | `fs_curso_caza_deportiva()` | Desarrollada |
+| FAUNA SILVESTRE | REGISTRO DE EMPRESAS AUTORIZADAS | `fs_reg_empresas_autorizadas()` | Desarrollada |
+| PRODUCCIÓN, INDUSTRIA Y COMERCIO | DEPÓSITOS Y ESTABLECIMIENTOS | `pic_depositos_establecimientos()` | Desarrollada |
+| PRODUCCIÓN, INDUSTRIA Y COMERCIO | BAMBÚ A NIVEL NACIONAL | `pic_plantaciones_bambu()` | Desarrollada |
+| PRODUCCIÓN, INDUSTRIA Y COMERCIO | BAMBÚ A NIVEL NACIONAL | `pic_movilizacion_bambu()` | Desarrollada |
+| CAMÉLIDOS SUDAMERICANOS SILVESTRES | DECLARACIONES DE MANEJO | `css_declaraciones_manejo()` | Desarrollada |
+| COMERCIO EXTERIOR | PERMISOS DE EXPORTACIÓN | `ce_permisos_exportacion()` | Desarrollada |
+| CONTROL DE PRODUCTORES | SEDES Y PUESTOS DE CONTROL | `cp_sede_puestos_control()` | Desarrollada |
+| INVESTIGACIÓN CIENTÍFICA Y RECURSOS GENÉTICOS | REGISTRO DE ACCESO A RECURSOS GENÉTICOS | `icrg_acceso_recursos_geneticos()` | Desarrollada |
+| INVESTIGACIÓN CIENTÍFICA Y RECURSOS GENÉTICOS | INSTITUCIONES CIENTÍFICAS NACIONALES DEPOSITARIAS | `icrg_inst_depositarias()` | Desarrollada |
+
+> ℹ️ The elements not listed here are still under development or
+> integration and will be included in future versions of the package.
 
 ## Data Sources
 
-All data is sourced from official SERFOR datasets published through the
-SNIFFS statistical portal. These datasets are public, periodically
-updated, and hosted on Google Drive.
+All data is retrieved directly from official SERFOR spreadsheets
+published through the SNIFFS Statistical portal, ensuring transparency
+and reproducibility.
 
 ## Notes
 
-📶 An active internet connection is required to retrieve the data.
+📶 Internet connection required to download datasets.
 
-⚠️ All datasets are read from Google Sheets hosted by SERFOR and may
-change structure without prior notice.
+⚠️ Data structure may change without prior notice if SERFOR updates its
+public datasets.
 
 ## Contributing
 
-If you’d like to contribute or suggest improvements, feel free to open
-an issue or submit a pull request on GitHub.
-
-## Citation
-
-If you use rsniffs in your work, please cite it as follows:
-
-``` r
-Santos Andrade, Paul E. (2025). rsniffs: Access Statistical Data from the National Forest and Wildlife Information System (SNIFFS), Peru.
-```
+Contributions and suggestions are welcome! Feel free to submit an issue
+or a pull request via GitHub.
